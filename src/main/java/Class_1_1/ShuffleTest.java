@@ -13,7 +13,7 @@ public class ShuffleTest {
             shuffle(test);
             //记录出现位置
             for(int j = 0;j < M;++j)
-                result[j][(int)test[j]]++;
+                result[(int)test[j]][j]++;
         }
         for(int i = 0;i < M;++i)
             for(int j = 0;j < M;++j){
