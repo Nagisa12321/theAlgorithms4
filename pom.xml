@@ -7,6 +7,18 @@
     <groupId>com.jtchen</groupId>
     <artifactId>theAlgorithms4</artifactId>
     <version>1.0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>10</source>
+                    <target>10</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <properties>
         <project.build.sourceEncoding>GBK</project.build.sourceEncoding>
         <maven.compiler.encoding>GBK</maven.compiler.encoding>
@@ -14,5 +26,25 @@
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jtchen</groupId>
+            <artifactId>algs4</artifactId>
+            <version>v1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.JtChen</groupId>
+            <artifactId>Myalgs</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 
 </project>
