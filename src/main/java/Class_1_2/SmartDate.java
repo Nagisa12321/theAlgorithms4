@@ -22,6 +22,18 @@ public class SmartDate {
         } else throw new IllegalArgumentException("Illegal date");
     }
 
+    public SmartDate(String date) {
+        String[] strings = date.split("/");
+        int year = Integer.parseInt(strings[0]);
+        int month = Integer.parseInt(strings[1]);
+        int day = Integer.parseInt(strings[2]);
+        if (isRealDate(year, month, day)) {
+            this.year = year;
+            this.month = month;
+            this.day = day;
+        } else throw new IllegalArgumentException("Illegal date");
+    }
+
     private boolean isRealDate(int year, int month, int day) {
         switch (month) {
             case 1:
@@ -43,6 +55,9 @@ public class SmartDate {
                 //ÈòÄê
                 if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
                     if (day >= 0 && day <= 29)
+                        return true;
+                } else {
+                    if (day >= 0 && day <= 28)
                         return true;
                 }
         }
@@ -105,6 +120,6 @@ public class SmartDate {
         SmartDate date = new SmartDate(2000, 2, 29);
         System.out.println(date.toString());
         System.out.println(date.dayOfTheWeek());
-        SmartDate date2 = new SmartDate(2019, 2, 29);
+        SmartDate date2 = new SmartDate("2019/2/12");
     }
 }

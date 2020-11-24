@@ -1,9 +1,6 @@
 package Class_1_2;
 
 import edu.princeton.cs.algs4.Date;
-import edu.princeton.cs.algs4.StdOut;
-
-import java.util.Arrays;
 
 /************************************************
  * @description
@@ -17,6 +14,18 @@ public class Transaction implements Comparable<Transaction> {
     private final double amount;
 
     public Transaction(String who, Date when, double amount) {
+        if (Double.isNaN(amount) || Double.isInfinite(amount))
+            throw new IllegalArgumentException("Amount cannot be NaN or infinite");
+        this.amount = amount;
+        this.when = when;
+        this.who = who;
+    }
+
+    public Transaction(String str) {
+        String[] strings = str.split(" ");
+        String who = strings[0];
+        Date when = new Date(strings[1]);
+        double amount = Double.parseDouble(strings[2]);
         if (Double.isNaN(amount) || Double.isInfinite(amount))
             throw new IllegalArgumentException("Amount cannot be NaN or infinite");
         this.amount = amount;
@@ -70,4 +79,7 @@ public class Transaction implements Comparable<Transaction> {
         return hash;
     }
 
+    public static void main(String[] args) {
+        Transaction a = new Transaction("Turing 11/24/2020 10.26");
+    }
 }
