@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class DrawTest {
     public static void main(String[] args){
         /**
-         * å‡½æ•°å€¼
+         * º¯ÊýÖµ
          */
 //        int N = 100;
 //        StdDraw.setXscale(0,N);

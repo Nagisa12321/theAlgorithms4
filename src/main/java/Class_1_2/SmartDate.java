@@ -1,6 +1,9 @@
 package Class_1_2;
 
+import com.JTChen.TypeOfData.MyQueue;
+
 import java.util.Objects;
+import java.util.Scanner;
 
 /************************************************
  * @description 根据Date的API实现一个smartDate类型,
@@ -91,6 +94,23 @@ public class SmartDate {
                 return null;
         }
     }
+
+    /**
+     * Test_1_3_16
+     * @param str 标准输入
+     * @return 所输出的SmartDate数组
+     */
+    public static SmartDate[] readDates(String str) {
+        var in = new Scanner(str);
+        MyQueue<SmartDate> queue = new MyQueue<>();
+        while (in.hasNext())
+            queue.enqueue(new SmartDate(in.next()));
+        SmartDate[] smartDates = new SmartDate[queue.size()];
+        for (int i = 0; i < smartDates.length; ++i)
+            smartDates[i] = queue.dequeue();
+        return smartDates;
+    }
+
 
     @Override
     public boolean equals(Object o) {

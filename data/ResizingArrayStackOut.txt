@@ -1,0 +1,3 @@
+was best times of the was the is (1 left of stack)
+the array: [It, is, the, times, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+the length: 20
