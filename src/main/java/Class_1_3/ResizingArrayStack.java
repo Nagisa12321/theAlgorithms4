@@ -3,38 +3,38 @@ package Class_1_3;
 import java.util.Iterator;
 
 /************************************************
- * @description ä¸‹å‹æ ˆï¼Œæ•°ç»„å®ç°ï¼Œæ”¯æŒè¿­ä»£~
+ * @description ÏÂÑ¹Õ»£¬Êı×éÊµÏÖ£¬Ö§³Öµü´ú~
  * @author jtchen
  * @date 2020/11/25 23:19
  * @version 2.0
  ************************************************/
 public class ResizingArrayStack<Item> implements Iterable<Item> {
     private Item[] items;
-    private int i;//æ ˆæŒ‡é’ˆ
+    private int i;//Õ»Ö¸Õë
 
 
     /**
-     * åˆ›å»ºä¸€ä¸ªå®¹é‡ä¸ºcapçš„ç©ºæ ˆ
+     * ´´½¨Ò»¸öÈİÁ¿ÎªcapµÄ¿ÕÕ»
      *
-     * @param cap å®¹é‡
+     * @param cap ÈİÁ¿
      */
     public ResizingArrayStack(int cap) {
-        //å®¹é‡
+        //ÈİÁ¿
         this.items = (Item[]) new Object[cap];
         this.i = -1;
     }
 
     /**
-     * è·å¾—æ•°ç»„
-     * @return æ•°ç»„
+     * »ñµÃÊı×é
+     * @return Êı×é
      */
     public Item[] getItems(){
         return items;
     }
     /**
-     * å¢åŠ ä¸€ä¸ªå­—ç¬¦ä¸²
+     * Ôö¼ÓÒ»¸ö×Ö·û´®
      *
-     * @param str å­—ç¬¦ä¸²
+     * @param str ×Ö·û´®
      */
     public void push(Item str) {
         if (++i == items.length) resize(2 * items.length);
@@ -42,9 +42,9 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
     }
 
     /**
-     * åˆ é™¤æœ€è¿‘æ·»åŠ çš„å­—ç¬¦ä¸²
+     * É¾³ı×î½üÌí¼ÓµÄ×Ö·û´®
      *
-     * @return æ‰€åˆ é™¤ä¸²
+     * @return ËùÉ¾³ı´®
      */
     public Item pop() {
         if (i == -1)
@@ -53,27 +53,27 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
     }
 
     /**
-     * åˆ¤æ–­æ ˆæ˜¯å¦ä¸ºç©º
+     * ÅĞ¶ÏÕ»ÊÇ·ñÎª¿Õ
      *
-     * @return æ˜¯å¦ä¸ºç©º
+     * @return ÊÇ·ñÎª¿Õ
      */
     public boolean isEmpty() {
         return i == -1;
     }
 
     /**
-     * æ ˆä¸­å…ƒç´ çš„æ•°é‡
+     * Õ»ÖĞÔªËØµÄÊıÁ¿
      *
-     * @return æ ˆä¸­å…ƒç´ çš„æ•°é‡
+     * @return Õ»ÖĞÔªËØµÄÊıÁ¿
      */
     public int size() {
         return i + 1;
     }
 
     /**
-     * æ ˆæ»¡æ—¶ï¼ŒæŠŠæ•°ç»„çš„ç©ºé—´å˜å¤§
+     * Õ»ÂúÊ±£¬°ÑÊı×éµÄ¿Õ¼ä±ä´ó
      *
-     * @param max å˜å¤§åçš„æ•°ç»„å¤§å°
+     * @param max ±ä´óºóµÄÊı×é´óĞ¡
      */
     private void resize(int max) {
         Item[] tmp = (Item[]) new Object[max];
@@ -83,9 +83,9 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
     }
 
     /**
-     * è°ƒç”¨è¿­ä»£å™¨
+     * µ÷ÓÃµü´úÆ÷
      *
-     * @return iteratorå¯¹è±¡
+     * @return iterator¶ÔÏó
      */
     @Override
     public Iterator<Item> iterator() {
@@ -93,7 +93,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
     }
 
     /**
-     * åµŒå¥—ç±»å®ç°è¿­ä»£å™¨
+     * Ç¶Ì×ÀàÊµÏÖµü´úÆ÷
      */
     private class ReverseArrayIterator implements Iterator<Item> {
         private int tmp = i;

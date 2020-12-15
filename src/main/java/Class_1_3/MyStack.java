@@ -18,6 +18,14 @@ public class MyStack<Item> implements Iterable<Item> {
         this.size = 0;
     }
 
+    public MyStack(MyStack<Item> s) {
+        MyStack<Item> tmp = new MyStack<>();
+        for (Item i : s)
+            tmp.push(i);
+        while (!tmp.isEmpty())
+            push(tmp.pop());
+    }
+
     /**
      * 删除最近添加的字符串
      *

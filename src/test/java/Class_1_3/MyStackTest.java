@@ -5,6 +5,17 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MyStackTest {
+    public static void main(String[] args) {
+        MyStack<Integer> stack1 = new MyStack<>();
+        stack1.push(1);
+        stack1.push(2);
+        stack1.push(3);
+        MyStack<Integer> stack2 = new MyStack<>(stack1);
+        stack1.push(4);
+        stack2.push(5);
+        System.out.println(stack1);
+        System.out.println(stack2);
+    }
 
     @Test
     public void peek() {
