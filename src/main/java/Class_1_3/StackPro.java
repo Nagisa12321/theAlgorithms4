@@ -1,36 +1,31 @@
 package Class_1_3;
 
-import java.util.ConcurrentModificationException;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 
 /************************************************
- * @description ä¸‹å‹æ ˆï¼Œé“¾è¡¨å®ç°ï¼Œæ”¯æŒè¿­ä»£~
+ *
  * @author jtchen
- * @date 2020/11/13
- * @version 2.1
+ * @date 2020/12/17 15:48
+ * @version 1.0
  ************************************************/
-public class MyStack<Item> implements Iterable<Item> {
-    private Node head;//å¤´èŠ‚ç‚¹
+public class StackPro<Item> implements Iterable<Item> {
+    private Node head;//Í·½Úµã
     private int size;
+    private Item min1;
+    private Item min2;
 
-    public MyStack() {
+    public StackPro() {
         this.head = null;
         this.size = 0;
     }
 
-    public MyStack(MyStack<Item> s) {
-        MyStack<Item> tmp = new MyStack<>();
-        for (Item i : s)
-            tmp.push(i);
-        while (!tmp.isEmpty())
-            push(tmp.pop());
-    }
-
     /**
-     * åˆ é™¤æœ€è¿‘æ·»åŠ çš„å­—ç¬¦ä¸²
+     * É¾³ı×î½üÌí¼ÓµÄ×Ö·û´®
      *
-     * @return æ‰€åˆ é™¤ä¸²
+     * @return ËùÉ¾³ı´®
      */
     public Item pop() {
         if (isEmpty()) throw new StackOverflowError("Stack empty");
@@ -41,22 +36,56 @@ public class MyStack<Item> implements Iterable<Item> {
     }
 
     /**
-     * å¢åŠ ä¸€ä¸ªå­—ç¬¦ä¸²
+     * test1_3_46
+     * Õ»µÄ¿ÉÉú³ÉĞÔÖĞ½ûÖ¹³öÏÖµÄĞòÁĞ
      *
-     * @param item å­—ç¬¦ä¸²
+     * @param item ÈëÕ»¡¢³öÕ»ÔªËØ
+     * @return ÊÇ·ñÄÜÉú³ÉÕ»
      */
-    public void push(Item item) {
-        Node newHead = new Node(item);
-        newHead.next = head;
-        head = newHead;
-        size++;
+    public boolean push(Item item) {
+        if (size == 0) {
+            Node newHead = new Node(item);
+            newHead.next = head;
+            head = newHead;
+            size++;
+            min1 = item;
+            return true;
+        } else if (size == 1) {
+            Node newHead = new Node(item);
+            newHead.next = head;
+            head = newHead;
+            size++;
+            if ((Integer) min1 < (Integer) item) {
+                min2 = item;
+            } else {
+                min2 = min1;
+                min1 = item;
+            }
+            return true;
+        } else {
+            if ((Integer) item > (Integer) min2) {
+                return false;
+            } else {
+                Node newHead = new Node(item);
+                newHead.next = head;
+                head = newHead;
+                size++;
+                if ((Integer) item > (Integer) min1) {
+                    min2 = item;
+                } else {
+                    min2 = min1;
+                    min1 = item;
+                }
+                return true;
+            }
+        }
     }
 
     /**
      * Exercise 1-3-7
-     * è§‚å¯Ÿæ ˆé¡¶å…ƒç´ 
+     * ¹Û²ìÕ»¶¥ÔªËØ
      *
-     * @return æ ˆé¡¶å…ƒç´ 
+     * @return Õ»¶¥ÔªËØ
      */
     public Item peek() {
         if (isEmpty()) throw new StackOverflowError("Stack empty");
@@ -64,25 +93,25 @@ public class MyStack<Item> implements Iterable<Item> {
     }
 
     /**
-     * åˆ¤æ–­æ ˆæ˜¯å¦ä¸ºç©º
+     * ÅĞ¶ÏÕ»ÊÇ·ñÎª¿Õ
      *
-     * @return æ˜¯å¦ä¸ºç©º
+     * @return ÊÇ·ñÎª¿Õ
      */
     public boolean isEmpty() {
         return head == null;
     }
 
     /**
-     * æ ˆä¸­å…ƒç´ çš„æ•°é‡
+     * Õ»ÖĞÔªËØµÄÊıÁ¿
      *
-     * @return æ ˆä¸­å…ƒç´ çš„æ•°é‡
+     * @return Õ»ÖĞÔªËØµÄÊıÁ¿
      */
     public int size() {
         return size;
     }
 
     /**
-     * æ¸…ç©ºæ ˆ
+     * Çå¿ÕÕ»
      */
     public void Empty() {
         head = null;
@@ -90,10 +119,10 @@ public class MyStack<Item> implements Iterable<Item> {
 
     /**
      * Exercise 1-3-12
-     * é™æ€copyæ–¹æ³•ï¼Œæ¥å—ä¸€ä¸ªå­—ç¬¦ä¸²çš„æ ˆä½œä¸ºå‚æ•°å¹¶è¿”å›è¯¥æ ˆçš„ä¸€ä¸ªå‰¯æœ¬
+     * ¾²Ì¬copy·½·¨£¬½ÓÊÜÒ»¸ö×Ö·û´®µÄÕ»×÷Îª²ÎÊı²¢·µ»Ø¸ÃÕ»µÄÒ»¸ö¸±±¾
      *
-     * @param stack å¾…copyæ ˆ
-     * @return æ ˆé•œåƒ
+     * @param stack ´ıcopyÕ»
+     * @return Õ»¾µÏñ
      */
     public static MyStack<String> copy(MyStack<String> stack) {
         MyStack<String> stack1 = new MyStack<>();
@@ -114,28 +143,20 @@ public class MyStack<Item> implements Iterable<Item> {
     }
 
     @Override
-    public Iterator<Item> iterator() {
+    public @NotNull Iterator<Item> iterator() {
         return new MyStackIterator();
     }
 
-    /**
-     * test1_3_50
-     * ä¿®æ”¹è¿­ä»£å™¨ä»£ç ï¼Œç¡®ä¿ç”¨ä¾‹ä¸€æ—¦åœ¨è¿­ä»£å™¨ä¸­ä¿®æ”¹é›†åˆæ•°æ®å°±æŠ›å‡ºä¸€ä¸ª
-     * {@link java.util.ConcurrentModificationException}
-     */
     private class MyStackIterator implements Iterator<Item> {
         private Node current = head;
-        private final int size = size();
 
         @Override
         public boolean hasNext() {
-            if (size != size()) throw new ConcurrentModificationException("Stack size is modified");
             return current != null;
         }
 
         @Override
         public Item next() {
-            if (size != size()) throw new ConcurrentModificationException("Stack size is modified");
             Item item = current.item;
             current = current.next;
             return item;
@@ -144,7 +165,7 @@ public class MyStack<Item> implements Iterable<Item> {
 
     /**
      * T
-     * ç§æœ‰Nodeæ•°æ®ç»“æ„
+     * Ë½ÓĞNodeÊı¾İ½á¹¹
      */
     private class Node {
         Node next;
@@ -155,4 +176,3 @@ public class MyStack<Item> implements Iterable<Item> {
         }
     }
 }
-

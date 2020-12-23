@@ -1,7 +1,6 @@
 package Class_1_3;
 
 import java.util.Iterator;
-import java.util.Queue;
 import java.util.Stack;
 
 
@@ -10,7 +9,7 @@ import java.util.Stack;
  * @version 2.1
  * @date 2020/11/05
  ******************************/
-public class MyQueue<Item> implements Iterable<Item>, Cloneable {
+public class MyQueue<Item> implements Queue<Item>, Cloneable {
 
     private Node head;
     private Node tail;
@@ -138,6 +137,14 @@ public class MyQueue<Item> implements Iterable<Item>, Cloneable {
     }
 
     /**
+     * test1_3_47 可连接的队列
+     * @param queue 待链接的队列
+     */
+    public void catenation(MyQueue<Item> queue) {
+        for (Item item : queue) enqueue(item);
+    }
+
+    /**
      * 私有链表数据结构
      */
     private class Node {
@@ -148,6 +155,4 @@ public class MyQueue<Item> implements Iterable<Item>, Cloneable {
             this.item = item;
         }
     }
-
-
 }

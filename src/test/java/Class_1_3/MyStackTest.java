@@ -40,4 +40,18 @@ public class MyStackTest {
         System.out.println(b.peek());
         System.out.println(a.peek());
     }
+
+    @Test
+    public void iterator() {
+        MyStack<Integer> stack = new MyStack<>();
+        for (int i = 0; i < 10; i++) {
+            stack.push(i);
+        }
+        System.out.println(stack.toString());
+        for (int i : stack) {
+            stack.pop();
+            stack.pop();
+            System.out.println(stack);
+        }
+    }
 }
