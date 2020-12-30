@@ -1,0 +1,1 @@
+Math.pow(N / N0, b)

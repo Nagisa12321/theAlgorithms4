@@ -7,9 +7,9 @@ package Class_1_3;
  * @version 1.0
  ************************************************/
 public class FixedCapacityStackOfStrings {
-    private int cap;//容量
-    private String[] strings;
-    private int i;//栈指针
+    private final int cap;  //容量
+    private final String[] strings;
+    private int i;          //栈指针
 
     /**
      * 创建一个容量为cap的空栈

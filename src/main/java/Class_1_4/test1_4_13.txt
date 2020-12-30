@@ -1,0 +1,51 @@
+a.  public class Accumulator {
+        private int n = 0;          // number of data values
+        private double sum = 0.0;   // sample variance * (n-1)
+        private double mu = 0.0;    // sample mean
+    ......
+
+    16 + 4 + 8 + 8 + 4 = 40B
+
+b.  public class Transaction implements Comparable<Transaction> {
+        private final String  who;      // customer
+        private final Date    when;     // date
+        private final double  amount;   // amount
+    ......
+
+    16 + 8 + 8 + 8 = 40B
+    16 + (64 + 2 * len()) + 32 + 8 = 120 + 2N
+
+c.  public class FixedCapacityStackOfStrings {
+        private final int cap;  //»›¡ø
+        private final String[] strings;
+        private int i;          //’ª÷∏’Î
+    ......
+
+    16 + 4 + 40C + 4 = 24 + 40C
+    16 + 4 + (24 + C * 8) + 4 + N * (64 + 2 * len()) = 48 + 8C + 64N + 2N*len()
+
+
+d.  public final class Point2D implements Comparable<Point2D> {
+
+        /**
+         * Compares two points by x-coordinate.
+         */
+        public static final Comparator<Point2D> X_ORDER = new XOrder();
+
+        /**
+         * Compares two points by y-coordinate.
+         */
+        public static final Comparator<Point2D> Y_ORDER = new YOrder();
+
+        /**
+         * Compares two points by polar radius.
+         */
+        public static final Comparator<Point2D> R_ORDER = new ROrder();
+
+        private final double x;    // x coordinate
+        private final double y;    // y coordinate
+    ......
+
+    16 + 8 + 8 + 8 + 8 + 8 = 56B
+
+g.  16 + 8 = 24
